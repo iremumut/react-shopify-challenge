@@ -2,11 +2,8 @@ import {useState} from "react";
 
 const axios = require("axios");
 
-function SearchForm() {
+function SearchForm({setSearchResult}) {
     const [search, setSearch] = useState("");
-
-    const [searchResult, setSearchResult] = useState([]);
-
 
 
     function handleSearch(e) {
@@ -28,7 +25,6 @@ function SearchForm() {
         
     }
 
-    console.log(searchResult);
     return(
         <form onSubmit={handleSubmit}>
             <input name="movie" value={search} onChange={handleSearch}></input>
