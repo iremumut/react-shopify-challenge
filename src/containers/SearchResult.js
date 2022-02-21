@@ -1,17 +1,31 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import { MoviesContext } from "../context/MoviesContext";
 
 function SearchResult({movie: {Title, Year, Poster, imdbID}}){
 
     const [store,dispatch] = useContext(MoviesContext);
-    
+
+    let isInStore = false;
+    const found = store.filter((movie) => {
+        return movie.imdbID === imdbID;
+    })
+
+    if(found.length >0){
+        isInStore = true;
+    }
+
+
     function handleNominate(){
-        dispatch({
-            type: "ADD_MOVIE",
-            payload:{
-                movie: {Title: Title, Year: Year, Poster: Poster, imdbID: imdbID }
-            } 
-        })
+        console.log(found);
+        if(!isInStore){
+            dispatch({
+                type: "ADD_MOVIE",
+                payload:{
+                    movie: {Title: Title, Year: Year, Poster: Poster, imdbID: imdbID }
+                } 
+            })
+        }
+        
     }
     
     return(
@@ -19,7 +33,7 @@ function SearchResult({movie: {Title, Year, Poster, imdbID}}){
             <h3>{Title}</h3>
             <p>{Year}</p>
             <img src={Poster} alt={Title}></img>
-            <button onClick={handleNominate}>Nominate</button>
+            <button onClick={handleNominate} disabled={isInStore}>Nominate</button>
         </li>
     )
 }
