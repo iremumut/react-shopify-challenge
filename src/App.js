@@ -6,18 +6,28 @@ import SearchResultList from './components/SearchResultList';
 import {useState} from "react";
 import NomineesList from './components/NomineesList';
 
+import { Container, Row, Col} from "react-bootstrap";
+
 function App() {
 
   const [searchResult, setSearchResult] = useState([]);
 
   //console.log(searchResult);
   return (
-    <div className="App">
-      <MovieProvider>
+    <div className='App'>
+        <MovieProvider>
         <Header />
-        <SearchForm setSearchResult={setSearchResult}/>
-        <SearchResultList movies={searchResult} />
-        <NomineesList />
+          <Container> 
+            <Row>
+              <Col>
+                <SearchForm setSearchResult={setSearchResult}/>
+                <SearchResultList movies={searchResult} />
+              </Col>
+              <Col>
+                <NomineesList /> 
+              </Col>
+            </Row>
+          </Container>
       </MovieProvider>
     </div>
   );

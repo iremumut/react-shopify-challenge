@@ -1,4 +1,4 @@
-import SearchResult from "../containers/SearchResult";
+import SearchResult from "./SearchResult";
 
 function SearchResultList({movies = []}){
 
@@ -9,7 +9,7 @@ function SearchResultList({movies = []}){
         return (<SearchResult key={movie.imdbID} movie={movie}></SearchResult>)
     }) 
     return (
-        <ul>
+        <ul className="">
             {moviesList}
         </ul>
     )

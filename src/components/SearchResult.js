@@ -1,5 +1,6 @@
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import { MoviesContext } from "../context/MoviesContext";
+import {Card, Button} from  "react-bootstrap";
 
 function SearchResult({movie: {Title, Year, Poster, imdbID}}){
 
@@ -16,7 +17,7 @@ function SearchResult({movie: {Title, Year, Poster, imdbID}}){
 
 
     function handleNominate(){
-        console.log(found);
+        //console.log(found);
         if(!isInStore){
             dispatch({
                 type: "ADD_MOVIE",
@@ -29,12 +30,14 @@ function SearchResult({movie: {Title, Year, Poster, imdbID}}){
     }
     
     return(
-        <li className="movie-result">
-            <h3>{Title}</h3>
+        <li className="movie-result ">
+            <h3 className="movie-result-title">{Title}</h3>
             <p>{Year}</p>
-            <img src={Poster} alt={Title}></img>
+            {/*<img src={Poster} alt={Title}></img>*/}
             <button onClick={handleNominate} disabled={isInStore}>Nominate</button>
         </li>
+
+        
     )
 }
 

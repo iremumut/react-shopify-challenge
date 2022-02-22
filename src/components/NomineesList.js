@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Nominee from "../containers/Nominee";
+import Nominee from "./Nominee";
 import { MoviesContext } from "../context/MoviesContext";
 function NomineesList() {
 

@@ -1,4 +1,5 @@
 import {useState} from "react";
+import { Form, Button, Col } from "react-bootstrap";
 
 const axios = require("axios");
 
@@ -12,6 +13,7 @@ function SearchForm({setSearchResult}) {
 
     function handleSubmit(e){
         e.preventDefault();
+        //setSearch(e.target.value);
         axios.get(`http://www.omdbapi.com/?apikey=a42bfb66&s=${search}`)
         .then((response) => {
             // handle success
@@ -26,10 +28,17 @@ function SearchForm({setSearchResult}) {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input name="movie" value={search} onChange={handleSearch}></input>
-            <button type="submit">Search</button>
-        </form>
+        <Form onSubmit={handleSubmit} className="mb-3">
+            <Form.Group className="row align-items-center">
+            <Col md={10}>
+            <Form.Control cl name="movie" type="text" placeholder="Search"value={search} onChange={handleSearch}/>
+            </Col>
+            <Col md={2}>
+            <Button type="submit">Search</Button>
+            </Col>
+            </Form.Group>
+
+        </Form>
     )
 }
 
