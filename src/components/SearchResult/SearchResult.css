@@ -1,0 +1,17 @@
+.movie-result {
+    margin: 15px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.movie-result-title {
+    font-weight: 500;
+    color: aliceblue;
+}
+
+.movie-result-button {
+    height: 35px;
+    border: none;
+    background: none;
+}

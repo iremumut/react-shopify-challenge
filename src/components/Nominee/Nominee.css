@@ -1,0 +1,21 @@
+.nominee {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nominee-img {
+    width: 80px;
+    height: 120px;
+    box-shadow:  5px 5px 10px #6d435a;
+    margin-right: 20px;
+}
+
+.nominee-btn {
+    border: none;
+    background: none;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-left: auto;
+}

@@ -1,16 +1,17 @@
-import SearchResult from "./SearchResult";
+import SearchResult from "./SearchResult/SearchResult";
+import uuid from 'react-uuid';
 
-function SearchResultList({movies = []}){
+function SearchResultList({result = []}){
 
-    if(movies.length === 0){
-        return (<div>No result yet.</div>)
+    if(result.length === 0){
+        return (<div>No results yet.</div>)
     }
-    const moviesList = movies.map((movie) => {
-        return (<SearchResult key={movie.imdbID} movie={movie}></SearchResult>)
+    const resultList = result.map((res) => {
+        return (<SearchResult key={uuid()} result={res}></SearchResult>)
     }) 
     return (
         <ul className="">
-            {moviesList}
+            {resultList}
         </ul>
     )
 }

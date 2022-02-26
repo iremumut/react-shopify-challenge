@@ -1,22 +1,44 @@
-import { useContext } from "react";
-import Nominee from "./Nominee";
+import { useContext} from "react";
+import Nominee from "./Nominee/Nominee";
+import Congrats from "../containers/Congrats";
 import { MoviesContext } from "../context/MoviesContext";
 function NomineesList() {
 
     const [store] = useContext(MoviesContext);
+    //const [filter, setFilter] = useState(store.isMovie);
 
-    if(store.length === 0){
-        return <div><h2>No Nominations Yet.</h2> </div>
+    
+    //console.log(store);
+    
+    if(store.movies.length === 0 && store.shows.length === 0){
+        return <div><h2>No Nominations Yet</h2> </div>
     }
 
-    const nominations = store.map((movie) => {
-        return (<Nominee key={movie.imdbID} movie={movie}></Nominee>)
-    })
+    let type = store.isMovie;
+    
+
+    const nominations = () =>{
+        if(type){
+            const res = store.movies.map((movie) => {
+                return (<Nominee key={movie.imdbID} nominee={movie}></Nominee>)
+            })
+            return res;
+        }else {
+            const res = store.shows.map((show) => {
+                return (<Nominee key={show.imdbID} nominee={show}></Nominee>)
+            })
+            return res;
+        }
+    }
+    
+    
     return (
         <div>
-            <h2>Nominations: </h2>
+            {type? store.movies.length===5? <Congrats type={type}/>: "" : store.shows.length===5? <Congrats type={type}/> : ""}
+
+            <h2 className="mb-3 text-center fs-2">{type? "Movie" : "Tv Show"} Nominations</h2>
             <ul>
-                {nominations}
+                {nominations()}
             </ul>
         </div>
     )

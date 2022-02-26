@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './containers/Header';
-import SearchForm from './components/SearchForm';
+import SearchForm from './components/SearchForm/SearchForm';
 import {MovieProvider} from  "./context/MoviesContext";
 import SearchResultList from './components/SearchResultList';
 import {useState} from "react";
@@ -13,23 +13,25 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
 
   //console.log(searchResult);
+  //console.log(searchResult);
   return (
-    <div className='App'>
+
         <MovieProvider>
         <Header />
-          <Container> 
+          <Container className='my-5'> 
             <Row>
-              <Col>
+              <Col xs={12} md={5}>
                 <SearchForm setSearchResult={setSearchResult}/>
-                <SearchResultList movies={searchResult} />
+                <SearchResultList result={searchResult} />
               </Col>
-              <Col>
+              <Col></Col>
+              <Col xs={12} md={5}>
                 <NomineesList /> 
               </Col>
             </Row>
           </Container>
       </MovieProvider>
-    </div>
+
   );
 }
 
