@@ -5,10 +5,7 @@ import { MoviesContext } from "../context/MoviesContext";
 function NomineesList() {
 
     const [store] = useContext(MoviesContext);
-    //const [filter, setFilter] = useState(store.isMovie);
 
-    
-    //console.log(store);
     
     if(store.movies.length === 0 && store.shows.length === 0){
         return <div><h2>No Nominations Yet</h2> </div>

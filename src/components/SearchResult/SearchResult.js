@@ -7,15 +7,10 @@ function SearchResult({result: {Title, Year, Poster, imdbID,Type}}){
 
     const [store,dispatch] = useContext(MoviesContext);
 
-    //const [isInStore, setIsInStore] = useState(false); 
-
-    //console.log("mounted");
     let isInStore = false;
     
     const found = () => {
         if(Type ===  "movie"){
-            //console.log("from result list")
-            //console.log(store.movies);
             const res = store.movies.filter((movie) => {
                 return movie.imdbID === imdbID;
             })
@@ -27,8 +22,7 @@ function SearchResult({result: {Title, Year, Poster, imdbID,Type}}){
             return res;
         }
     } 
-    //console.log(Title);
-    //console.log(found().length);
+
     if(found().length >0){
         isInStore = true;
     }
@@ -42,7 +36,7 @@ function SearchResult({result: {Title, Year, Poster, imdbID,Type}}){
         }else if(store.shows.length >=5){
             storeFull = true;
         }
-        //console.log(storeFull);
+
         if(!isInStore && !storeFull){
             if(Type === "movie"){
                 dispatch({
@@ -67,9 +61,6 @@ function SearchResult({result: {Title, Year, Poster, imdbID,Type}}){
     return(
         <li className="movie-result">
             <h5 className="movie-result-title">{Title} <Badge pill bg="light" text="dark">{Year}</Badge>{' '}</h5>
-            {/*<p>{Year}</p>*/}
-            {/*<img src={Poster} alt={Title}></img>*/}
-            {/*console.log(isInStore)*/}
             <Button onClick={handleNominate} disabled={isInStore} variant="light" className="movie-result-button">Nominate</Button>
         </li>
 
